@@ -1,0 +1,82 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "customer_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "device_type": {
+      "type": "string",
+      "enum": [
+        "Desktop PC",
+        "Laptop",
+        "MacBook / iMac",
+        "Tablet",
+        "Gaming PC",
+        "Server",
+        "Other"
+      ]
+    },
+    "service_title": {
+      "type": "string"
+    },
+    "issue_description": {
+      "type": "string"
+    },
+    "preferred_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "urgency": {
+      "type": "string",
+      "enum": [
+        "Standard",
+        "Priority",
+        "Emergency"
+      ],
+      "default": "Standard"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Pending",
+        "Confirmed",
+        "In Progress",
+        "Completed",
+        "Cancelled"
+      ],
+      "default": "Pending"
+    }
+  },
+  "required": [
+    "customer_name",
+    "email",
+    "device_type",
+    "issue_description"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
